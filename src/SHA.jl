@@ -22,9 +22,7 @@ for (f, ctx) in [(:sha1, :SHA1_CTX),
                  (:sha512, :SHA512_CTX)]
     @eval begin
         # Allows things like:
-        # open("test.txt") do f
-        #     sha256(f)
-        # done
+        # open(sha256, "test.txt")
         function $f(io::IO)
             ctx = $ctx()
             update!(ctx, readbytes(io));
